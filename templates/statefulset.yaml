@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "handbrake-watcher.fullname" . }}
+  labels:
+    {{- include "handbrake-watcher.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ .Values.nameOverride }}
+  selector:
+    matchLabels:
+      {{- include "handbrake-watcher.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "handbrake-watcher.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: JOB_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: JOB_PROFILE
+              value: {{ .Values.encodingProfile }}
+            - name: QUALITY
+              value: {{ .Values.quality }}
+            - name: CONSUL_HTTP_ADDR
+              value: consul-consul-server.consul:8500
+          volumeMounts:
+            - name: watch
+              mountPath: /watch
+            - name: move
+              mountPath: /move
+      volumes:
+        - name: watch
+          hostPath:
+            path: "{{ .Values.localPath }}/{{ .Values.watchPath }}_{{ .Values.quality }}"
+        - name: move
+          hostPath:
+            path: "{{ .Values.localPath }}/{{ .Values.movePath }}"

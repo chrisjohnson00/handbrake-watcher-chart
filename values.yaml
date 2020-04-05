@@ -5,21 +5,21 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: chrisjohnson00/handbrake-job-creator
+  pullPolicy: Always
+  tag: master
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "handbrake-job-creator"
+fullnameOverride: "handbrake-job-creator"
+localPath: /nfs-data
+watchPath: watch
+movePath: encoding_queue
+quality: 720p
+encodingProfile: "Roku 720p30 Surround"
 
 serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name:
+  name: "handbrake-job-creator-svc-acnt"
+  annotations: []
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -31,23 +31,6 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
-service:
-  type: ClusterIP
-  port: 80
-
-ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
