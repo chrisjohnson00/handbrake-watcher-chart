@@ -6,15 +6,16 @@ replicaCount: 1
 
 image:
   repository: chrisjohnson00/handbrake-job-creator
-  pullPolicy: Always
-  tag: master
+  pullPolicy: IfNotPresent
+  tag: v0.1.0
 
 nameOverride: "handbrake-job-creator"
 fullnameOverride: "handbrake-job-creator"
 localPath: /nfs-data
+# the full path for watch becomes {{localPath}}/{{watchPath}}_{{quality}}
 watchPath: watch
-movePath: encoding_queue
 quality: 720p
+movePath: encoding_queue
 encodingProfile: "Roku 720p30 Surround"
 
 serviceAccount:
@@ -32,17 +33,13 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+resources:
+  limits:
+    cpu: 250m
+    memory: 400Mi
+  requests:
+    cpu: 50m
+    memory: 200Mi
 
 nodeSelector: {}
 
