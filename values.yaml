@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: chrisjohnson00/handbrake-job-creator
   pullPolicy: IfNotPresent
-  tag: v0.1.1
+  tag: v1.0.0
 
 nameOverride: "handbrake-job-creator"
 fullnameOverride: "handbrake-job-creator"
@@ -17,6 +17,7 @@ watchPath: watch
 quality: 720p
 movePath: encoding_queue
 encodingProfile: "Roku 720p30 Surround"
+jobType: tv
 
 serviceAccount:
   name: "handbrake-job-creator-svc-acnt"

@@ -35,6 +35,8 @@ spec:
               value: {{ .Values.quality }}
             - name: CONSUL_HTTP_ADDR
               value: consul-consul-server.consul:8500
+            - name: JOB_TYPE
+              value: {{ .Values.jobType }}
           volumeMounts:
             - name: watch
               mountPath: /watch
