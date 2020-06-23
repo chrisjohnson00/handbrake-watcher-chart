@@ -49,3 +49,5 @@ tolerations: []
 affinity: {}
 
 labels: {}
+
+annotations: {}
