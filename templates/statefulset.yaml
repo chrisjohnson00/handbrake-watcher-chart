@@ -9,7 +9,7 @@ metadata:
     {{- end }}
   {{- if .Values.annotations -}}
   annotations:
-    {{- include "handbrake-watcher.annotations" . | nindent 4 }}
+    {{- toYaml .Values.annotations | nindent 4 }}
   {{- end }}
 spec:
   replicas: 1
