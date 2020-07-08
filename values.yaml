@@ -11,11 +11,9 @@ image:
 
 nameOverride: "handbrake-job-creator"
 fullnameOverride: "handbrake-job-creator"
-localPath: /nfs-data
-# the full path for watch becomes {{localPath}}/{{watchPath}}_{{quality}}
-watchPath: watch
+watchPath: /nfs-data/watch
 quality: 720p
-movePath: encoding_queue
+movePath: /nfs-data/encoding_queue
 encodingProfile: "Roku 720p30 Surround"
 jobType: tv
 
