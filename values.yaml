@@ -20,8 +20,8 @@ jobType: tv
 # for example if the watcher creates jobs to downgrade resolution, you might want to set
 # needle to 1080p and value to 720p so that any 1080p file (with 1080p in the name) encoded comes out with 720p in the
 # name instead
-fileNameReplaceNeedle: ""
-fileNameReplaceValue: ""
+fileNameReplaceNeedle: None
+fileNameReplaceValue: None
 
 serviceAccount:
   name: "handbrake-job-creator-svc-acnt"
