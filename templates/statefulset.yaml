@@ -48,6 +48,10 @@ spec:
               value: consul-consul-server.consul:8500
             - name: JOB_TYPE
               value: {{ .Values.jobType }}
+            - name: FILE_NAME_REPLACE_NEEDLE
+              value: {{ .Values.fileNameReplaceNeedle }}
+            - name: FILE_NAME_REPLACE_VALUE
+              value: {{ .Values.fileNameReplaceValue }}
           volumeMounts:
             - name: watch
               mountPath: /watch
