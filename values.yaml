@@ -11,9 +11,9 @@ image:
 
 nameOverride: "handbrake-job-creator"
 fullnameOverride: "handbrake-job-creator"
-watchPath: /nfs-data/watch
+watchPath: /override/this
 quality: 720p
-movePath: /nfs-data/encoding_queue
+movePath: /data/k8s/encoding_queue
 encodingProfile: "Roku 720p30 Surround"
 jobType: tv
 # the needle is what to look for, value is what to replace with
@@ -55,3 +55,6 @@ affinity: {}
 labels: {}
 
 annotations: {}
+
+nfs:
+  server: 192.168.10.131

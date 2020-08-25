@@ -59,8 +59,10 @@ spec:
               mountPath: /move
       volumes:
         - name: watch
-          hostPath:
+          nfs:
+            server: "{{ .Values.nfs.server }}"
             path: "{{ .Values.watchPath }}"
         - name: move
-          hostPath:
+          nfs:
+            server: "{{ .Values.nfs.server }}"
             path: "{{ .Values.movePath }}"
