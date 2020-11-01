@@ -29,6 +29,8 @@ spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}-{{ .Values.nameOverride }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      affinity:
+        {{- toYaml .Values.affinity | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
