@@ -22,6 +22,7 @@ jobType: tv
 # name instead
 fileNameReplaceNeedle: None
 fileNameReplaceValue: None
+consulHttpAddr: "consul-consul-server.consul:8500"
 
 serviceAccount:
   name: "handbrake-job-creator-svc-acnt"

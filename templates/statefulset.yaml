@@ -47,7 +47,7 @@ spec:
             - name: QUALITY
               value: {{ .Values.quality }}
             - name: CONSUL_HTTP_ADDR
-              value: consul-consul-server.consul:8500
+              value: {{ .Values.consulHttpAddr }}
             - name: JOB_TYPE
               value: {{ .Values.jobType }}
             - name: FILE_NAME_REPLACE_NEEDLE
