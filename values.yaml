@@ -24,6 +24,12 @@ fileNameReplaceNeedle: None
 fileNameReplaceValue: None
 consulHttpAddr: "consul-consul-server.consul:8500"
 
+volumeMounts:
+  watch:
+    mountPath: /watch
+  move:
+    mountPath: /move
+
 serviceAccount:
   name: "handbrake-job-creator-svc-acnt"
   annotations: []

@@ -56,9 +56,9 @@ spec:
               value: {{ .Values.fileNameReplaceValue }}
           volumeMounts:
             - name: watch
-              mountPath: /watch
+              mountPath: {{ .Values.volumeMounts.watch.mountPath }}
             - name: move
-              mountPath: /move
+              mountPath: {{ .Values.volumeMounts.move.mountPath }}
       volumes:
         - name: watch
           nfs:
