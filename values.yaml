@@ -1,4 +1,4 @@
-# Default values for handbrake-watcher.
+# Default values for handbrak/home/chris/PycharmProjects/ansible-nase-watcher.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -65,3 +65,5 @@ annotations: {}
 
 nfs:
   server: 192.168.10.131
+
+extraEnvVars: {}

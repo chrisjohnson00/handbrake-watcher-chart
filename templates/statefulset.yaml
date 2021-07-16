@@ -54,6 +54,10 @@ spec:
               value: {{ .Values.fileNameReplaceNeedle }}
             - name: FILE_NAME_REPLACE_VALUE
               value: {{ .Values.fileNameReplaceValue }}
+        {{- range $key, $value := .Values.extraEnvVars }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+        {{- end }}
           volumeMounts:
             - name: watch
               mountPath: {{ .Values.volumeMounts.watch.mountPath }}
