@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: chrisjohnson00/handbrake-job-creator
+  repository: chrisjohnson00/handbrake-k8s-job-creator
   pullPolicy: IfNotPresent
-  tag: v1.0.0
+  tag: v1.0.0 # change me
 
 nameOverride: "handbrake-job-creator"
 fullnameOverride: "handbrake-job-creator"
@@ -64,4 +64,6 @@ labels: {}
 annotations: {}
 
 nfs:
-  server: 192.168.10.131
+  server: 192.168.1.131
+
+extraEnvVars: {}
